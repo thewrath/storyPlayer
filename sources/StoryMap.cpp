@@ -1,10 +1,20 @@
 #include "../includes/StoryMap.hpp"
 
+/**
+ * @brief base constructor 
+ * @details no more details 
+ */
 StoryMap::StoryMap()
 {
 
 }
 
+/**
+ * @brief storyMap constructor with simple file path which defined the story's flow 
+ * @details used this constructor to load a storyMap based on a file 
+ * 
+ * @param filePath the file path of the file which defined the flow 
+ */
 StoryMap::StoryMap(std::string filePath)
 {
 	this->loadStoryMapFile(filePath);
@@ -15,6 +25,12 @@ StoryMap::~StoryMap()
 
 }
 
+/**
+ * @brief create a storyMap from a storyFile 
+ * @details create a storyMap from a storyFile
+ * 
+ * @param filePath the file path of the file which defined the flow
+ */
 void StoryMap::loadStoryMapFile(std::string filePath)
 {
 	std::string line;
@@ -41,14 +57,19 @@ void StoryMap::loadStoryMapFile(std::string filePath)
       			}	
 
       		}
-      		this->orders[order] = value;
+      		this->orderMap[order] = value;
     	}
-    	this->print(&this->orders);
     	myfile.close();
   	}
   	else std::cout << "Unable to open file" << std::endl; 
 }
 
+/**
+ * @brief only used for debug 
+ * @details print the map order of the storyMap
+ * 
+ * @param mapElement map contening orders 
+ */
 void StoryMap::print(std::map<std::string, std::string>* mapElement)
 {
 	for(auto& t : *mapElement)

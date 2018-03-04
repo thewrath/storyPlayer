@@ -12,11 +12,15 @@ public:
 	StoryMap();
 	StoryMap(std::string filePath);
 	~StoryMap();
-
-	std::map<std::string, std::string>* getOrders(){return &this->orders;}
+	/**
+	 * @brief return orderMap of the storyMap
+	 * @details return the orderMap of the storyMap
+	 * @return pointer of the storyMap's orderMap
+	 */
+	std::map<std::string, std::string>* getOrders(){return &this->orderMap;}
 private:
-
-	std::map<std::string, std::string> orders;
+	// std::string name; the story map name ( catch from file title or param in consctructor )
+	std::map<std::string, std::string> orderMap;
 	void loadStoryMapFile(std::string filePath);
 	void print(std::map<std::string, std::string>* mapElement);
 };
