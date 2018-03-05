@@ -1,0 +1,5 @@
+other: 12
+test: 56
+other: valueText
+test: valueOther 
+playSound: resources/sound.wav
