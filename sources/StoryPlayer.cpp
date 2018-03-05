@@ -8,7 +8,12 @@ StoryPlayer::StoryPlayer()
 StoryPlayer::StoryPlayer(StoryMap* storyMap)
 {
 	//balance this in a thread and read 
-	this->orderFunctionMap["test"] = &testOrder;
+	//add corresponding function to order 
+	{
+		this->orderFunctionMap["test"] = &testOrder;	
+		this->orderFunctionMap["other"] = &otherOrder;
+	}
+	
 	
 	for(auto& t : *storyMap->getOrders())
 	{	

@@ -1,7 +1,7 @@
 CFLAGS = -std=c++14 -fpermissive
 LIBS=-lsfml-graphics -lsfml-window -lsfml-system
-SRCS_DIR = sources/
-INCLUDES_DIR = includes/
+SRCS_DIR = ../sources/
+INCLUDES_DIR = ../includes/
 
 all: sfml-app clean
 
@@ -11,8 +11,8 @@ storyMap.o: $(SRCS_DIR)StoryMap.cpp
 storyPlayer.o: $(SRCS_DIR)StoryPlayer.cpp 
 	g++ -c $(SRCS_DIR)StoryPlayer.cpp -o storyPlayer.o $(CFLAGS)
 
-main.o: $(SRCS_DIR)main.cpp
-	g++ -c $(SRCS_DIR)main.cpp -o main.o $(CFLAGS)
+main.o: main.cpp
+	g++ -c main.cpp -o main.o $(CFLAGS)
 
 sfml-app: main.o storyMap.o storyPlayer.o
 	@echo "** Building the exec"

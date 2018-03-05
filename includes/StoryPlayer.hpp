@@ -32,7 +32,8 @@ private:
 	std::vector<StoryMap> storyMapList;
 
 	//list of order function 
-	static void testOrder(std::string value){ std::cout << "i'am a realy great fonction and i say :"<< value << std::endl;};
+	static void testOrder(std::string value){ std::cout << "i am a realy great fonction and i say :"<< value << std::endl;};
+	static void otherOrder(std::string value){ std::cout << "i am another really great function and i say :" << value << std::endl; };
 };
 
 #endif
