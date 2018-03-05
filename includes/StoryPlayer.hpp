@@ -7,6 +7,7 @@
 #include <string>
 
 typedef void (*orderFunction)(std::string);
+typedef std::map<std::string, orderFunction> orderFunction_map;
 
 class StoryPlayer
 {
@@ -23,12 +24,15 @@ public:
 	 */
 	void addStoryMap(StoryMap storyMap){ this->storyMapList.push_back(storyMap); }
 	//std::vector getStoryMapList(){ //return list of storyMap name }
+	void addOrderFunction(std::string order, orderFunction){ this->orderFunctionMap[order]; }
 
 private:
 	StoryMap storyMap;
-	std::map<std::string, orderFunction> orderFunctionMap;	
+	orderFunction_map orderFunctionMap;	
 	std::vector<StoryMap> storyMapList;
-	void testOrder(std::string value){ std::cout << "i'am a realy great fonction and i say :"<< value << std::endl;};
+
+	//list of order function 
+	static void testOrder(std::string value){ std::cout << "i'am a realy great fonction and i say :"<< value << std::endl;};
 };
 
 #endif

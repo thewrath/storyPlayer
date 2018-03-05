@@ -57,8 +57,9 @@ void StoryMap::loadStoryMapFile(std::string filePath)
       			}	
 
       		}
-      		this->orderMap[order] = value;
+      		this->orderMap.insert(std::make_pair(order,value)); 
     	}
+    	this->print(&this->orderMap);
     	myfile.close();
   	}
   	else std::cout << "Unable to open file" << std::endl; 
@@ -70,7 +71,7 @@ void StoryMap::loadStoryMapFile(std::string filePath)
  * 
  * @param mapElement map contening orders 
  */
-void StoryMap::print(std::map<std::string, std::string>* mapElement)
+void StoryMap::print(std::multimap<std::string, std::string>* mapElement)
 {
 	for(auto& t : *mapElement)
 	{

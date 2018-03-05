@@ -17,12 +17,12 @@ public:
 	 * @details return the orderMap of the storyMap
 	 * @return pointer of the storyMap's orderMap
 	 */
-	std::map<std::string, std::string>* getOrders(){return &this->orderMap;}
+	std::multimap<std::string, std::string>* getOrders(){return &this->orderMap;}
 private:
 	// std::string name; the story map name ( catch from file title or param in consctructor )
-	std::map<std::string, std::string> orderMap;
+	std::multimap<std::string, std::string> orderMap;
 	void loadStoryMapFile(std::string filePath);
-	void print(std::map<std::string, std::string>* mapElement);
+	void print(std::multimap<std::string, std::string>* mapElement);
 };
 
 #endif
