@@ -1,4 +1,4 @@
-#include "../includes/StoryPlayerTest.hpp"
+#include "../includes/StoryPlayer.hpp"
 
 
 namespace sp 
@@ -23,12 +23,13 @@ namespace sp
 		{
 			while(std::getline(myFile,line))
 			{
+				std::vector<std::string> temp;
 				while(std::regex_search(line,m,e))
 				{
-					this->orders.push_back(m[0]);
-					std::cout << this->orders[this->orders.size()-1] << " ";
+					temp.push_back(m[0]);
 					line = m.suffix().str();
 				}
+				this->orders.push_back(temp);
 				std::cout << std::endl;
 			}
 			myFile.close();
@@ -45,6 +46,7 @@ namespace sp
 	{
 		{
 			this->orderFunctionMap["test"] = &testOrder;
+			this->orderFunctionMap["playSound"] = &playSoundOrder;
 		}
 		this->storyMaps.push_back(storyMap);
 	}
@@ -58,14 +60,17 @@ namespace sp
 	{
 		for(auto& storyMap : this->storyMaps)
 		{
-			auto iter = this->orderFunctionMap.find(storyMap.getOrders()[0]);
-			if ( iter == this->orderFunctionMap.end() )
+			for(auto& t : storyMap.getOrders())
 			{
-				//not found 
-			}
-			else
-			{
-				(*iter->second)(storyMap.getOrders());
+				auto iter = this->orderFunctionMap.find(t[0]);
+				if ( iter == this->orderFunctionMap.end() )
+				{
+					//not found 
+				}
+				else
+				{
+					(*iter->second)(t);
+				}
 			}
 		}
 	}

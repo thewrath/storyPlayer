@@ -1,5 +1,5 @@
-#ifndef STORYPLAYERTEST_HPP
-#define STORYPLAYERTEST_HPP
+#ifndef STORYPLAYER_HPP
+#define STORYPLAYER_HPP
 
 #include <string>
 #include <iostream>
@@ -23,11 +23,11 @@ namespace sp {
 			~StoryMap();
 			//std::regex getCommandTemplate() { return this->commandTemplate; }
 			//void setCommandTemplate(std::regex commandTemplate) { this->commandTemplate = commandTemplate; }
-			std::vector<std::string> getOrders() { return this->orders; }
+			std::vector<std::vector<std::string>> getOrders() { return this->orders; }
 
 		private:
 			//std::regex commandTemplate("[^@:]+");
-			std::vector<std::string> orders;
+			std::vector<std::vector<std::string>> orders;
 			void loadStoryFile(std::string filePath);
 	};
 
@@ -46,6 +46,7 @@ namespace sp {
 			std::map<std::string, orderFunction> orderFunctionMap;
 			
 			static void testOrder(std::vector<std::string> parameters) { std::cout << parameters[1] << std::endl; }
+			static void playSoundOrder(std::vector<std::string> parameters) { std::cout << "i play sound : " << parameters[1] << " with duration " << parameters[2] << std::endl; }
 	};
 };
 #endif
