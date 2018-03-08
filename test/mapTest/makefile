@@ -1,19 +1,19 @@
 CFLAGS = -std=c++17 -fpermissive
 LIBS=-lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
-SRCS_DIR = ../sources/
-INCLUDES_DIR = ../includes/
+SRCS_DIR = ../../sources/
+INCLUDES_DIR = ../../includes/
 
 all: sfml-app clean
 
-storyPlayer.o: $(SRCS_DIR)StoryPlayer.cpp 
-	g++ -c $(SRCS_DIR)StoryPlayer.cpp -o storyPlayer.o $(CFLAGS)
+storyPlayerTest.o: $(SRCS_DIR)StoryPlayerTest.cpp 
+	g++ -c $(SRCS_DIR)StoryPlayerTest.cpp -o storyPlayerTest.o $(CFLAGS)
 
 main.o: main.cpp
 	g++ -c main.cpp -o main.o $(CFLAGS)
 
-sfml-app: main.o storyPlayer.o
+sfml-app: main.o storyPlayerTest.o
 	@echo "** Building the exec"
-	g++ -o sfml-app main.o storyPlayer.o $(LIBS) $(CFLAGS)
+	g++ -o sfml-app main.o storyPlayerTest.o $(LIBS) $(CFLAGS)
 
 clean:
 	@echo "** Removing object files ..."

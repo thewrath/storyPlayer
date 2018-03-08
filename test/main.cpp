@@ -1,13 +1,12 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 #include "../includes/StoryPlayer.hpp"
-#include "../includes/StoryMap.hpp"
 
 int main()
 {
-    StoryMap sm("resources/storyMap.sm");
+    sp::StoryMap sm("resources/storyMap.sm");
 
-    StoryPlayer sp(sm);
+    sp::StoryPlayer sp(sm);
 
     //mutex here ? 
     sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
