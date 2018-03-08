@@ -19,7 +19,7 @@ StoryPlayer::StoryPlayer(StoryMap storyMap)
 
 }
 
-void StoryPlayer::update(GameComponents* gameComponents)
+void StoryPlayer::update()
 {
 	//find order and play corresponding function 
 	for(auto& storyMap : this->storyMapList)
@@ -32,7 +32,7 @@ void StoryPlayer::update(GameComponents* gameComponents)
     			// not found
 			}
 			else{
-				(*iter->second)(t.second, gameComponents);	
+				(*iter->second)(t.second);	
 			}
 		}
 	}

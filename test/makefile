@@ -1,4 +1,4 @@
-CFLAGS = -std=c++14 -fpermissive
+CFLAGS = -std=c++17 -fpermissive
 LIBS=-lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
 SRCS_DIR = ../sources/
 INCLUDES_DIR = ../includes/

@@ -6,35 +6,29 @@
 int main()
 {
     StoryMap sm("resources/storyMap.sm");
-    StoryMap smOther("resources/storyMap2.sm");
 
     StoryPlayer sp(sm);
-    sp.addStoryMap(smOther);
 
+    //mutex here ? 
     sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
     sf::Music buffer;
-
-    GameComponents gameComponents = {
-         &window,
-         &buffer,
-    };
 
     sf::CircleShape shape(100.f);
     shape.setFillColor(sf::Color::Green);
 
-    while (gameComponents.window->isOpen())
+    while (window.isOpen())
     {
         sf::Event event;
-        while (gameComponents.window->pollEvent(event))
+        while (window.pollEvent(event))
         {
             if (event.type == sf::Event::Closed)
-                gameComponents.window->close();
-            sp.update(&gameComponents);
+                window.close();
+            sp.update();
         }
 
-        gameComponents.window->clear();
-        gameComponents.window->draw(shape);
-        gameComponents.window->display();
+        window.clear();
+        window.draw(shape);
+        window.display();
     }
 
     return 0;

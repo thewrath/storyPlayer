@@ -1,5 +1,4 @@
-other: 8
-test: 6
-other: textValue
-test: value 
-playSound: resources/sound.wav
+test@texthere:5
+other@texthere:456
+test@texthere:5996
+playSound@filePath:time  

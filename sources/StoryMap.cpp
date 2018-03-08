@@ -33,36 +33,26 @@ StoryMap::~StoryMap()
  */
 void StoryMap::loadStoryMapFile(std::string filePath)
 {
-	std::string line;
-  	std::ifstream myfile (filePath);
+  std::regex e("[^@:]+");
+  std::smatch m;
 
-  	if (myfile.is_open())
-  	{
-    	while ( std::getline (myfile,line) )
-    	{
-    		std::string order;
-    		std::string value;
-    		bool isAnOrder = true;
-      		for(char & c : line)
-      		{
-      			if(c == ':')
-      				isAnOrder = false;
-      			if(isAnOrder)
-      			{
-      				order += c;
-      			}
-      			else if(c != ':' && c != ' ')
-      			{
-      				value += c;
-      			}	
+  std::string line;
+  std::ifstream myFile(filePath);
 
-      		}
-      		this->orderMap.insert(std::make_pair(order,value)); 
-    	}
-    	this->print(&this->orderMap);
-    	myfile.close();
-  	}
-  	else std::cout << "Unable to open file" << std::endl; 
+  if(myFile.is_open())
+  {
+    while( std::getline(myFile,line) )
+    {
+      while (std::regex_search (line,m,e)) 
+      {
+        this->orderMap.insert(std::make_pair(m[0],m[1]));
+        line = m.suffix().str(); 
+      }   
+    }
+    this->print(&this->orderMap);
+    myFile.close();
+  }
+	else std::cout << "Unable to open file" << std::endl; 
 }
 
 /**

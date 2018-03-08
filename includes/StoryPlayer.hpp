@@ -11,16 +11,7 @@
 #include <vector>
 #include <string>
 
-typedef struct GameComponents
-{
-	
-	sf::RenderWindow* window;
-	sf::Music* soundBuffer;
-
-} 
-GameComponents; 
-
-typedef void (*orderFunction)(std::string, GameComponents*);
+typedef void (*orderFunction)(std::string);
 typedef std::map<std::string, orderFunction> orderFunction_map;
 
 class StoryPlayer
@@ -29,7 +20,7 @@ public:
 	StoryPlayer();
 	StoryPlayer(StoryMap storyMap);
 	~StoryPlayer();
-	void update(GameComponents* gameComponents);
+	void update();
 	/**
 	 * @brief add storyMap to storyPlayer
 	 * @details add storyMap to the vector storyMapList of the storyMap
@@ -46,9 +37,9 @@ private:
 	std::vector<StoryMap> storyMapList;
 
 	//list of order function 
-	static void testOrder(std::string value, GameComponents* gameComponents){ std::cout << "i am a realy great fonction and i say :"<< value << std::endl;};
-	static void otherOrder(std::string value, GameComponents* gameComponents){ std::cout << "i am another really great function and i say :" << value << std::endl; };
-	static void playSoundOrder(std::string value, GameComponents* gameComponents){ std::cout << "playing sound : " << value << std::endl; gameComponents->soundBuffer->openFromFile(value); gameComponents->soundBuffer->play(); }
+	static void testOrder(std::string value){ std::cout << "i am a realy great fonction and i say :"<< value << std::endl;};
+	static void otherOrder(std::string value){ std::cout << "i am another really great function and i say :" << value << std::endl; };
+	static void playSoundOrder(std::string value){ std::cout << "playing sound : " << value << std::endl; }
 };
 
 #endif
