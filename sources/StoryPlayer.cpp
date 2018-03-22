@@ -30,7 +30,6 @@ namespace sp
 					line = m.suffix().str();
 				}
 				this->orders.push_back(temp);
-				std::cout << std::endl;
 			}
 			myFile.close();
 		}
@@ -39,21 +38,21 @@ namespace sp
 
 	StoryPlayer::StoryPlayer()
 	{
-
-	}
-
-	StoryPlayer::StoryPlayer(StoryMap storyMap)
-	{
 		{
 			this->orderFunctionMap["test"] = &testOrder;
 			this->orderFunctionMap["playSound"] = &playSoundOrder;
 		}
+	}
+
+	StoryPlayer::StoryPlayer(StoryMap storyMap)
+	{
+		this->initDefaultsOrders();
 		this->storyMaps.push_back(storyMap);
 	}
 
 	StoryPlayer::~StoryPlayer()
 	{
-
+		this->initDefaultsOrders();
 	}
 
 	void StoryPlayer::update()
@@ -72,6 +71,14 @@ namespace sp
 					(*iter->second)(t);
 				}
 			}
+		}
+	}
+
+	void StoryPlayer::initDefaultsOrders()
+	{
+		{
+			this->orderFunctionMap["test"] = &testOrder;
+			this->orderFunctionMap["playSound"] = &playSoundOrder;
 		}
 	}
 

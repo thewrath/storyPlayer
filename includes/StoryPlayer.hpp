@@ -45,6 +45,8 @@ namespace sp {
 			std::vector<StoryMap> storyMaps;
 			std::map<std::string, orderFunction> orderFunctionMap;
 			
+			void initDefaultsOrders();
+	
 			static void testOrder(std::vector<std::string> parameters) { std::cout << parameters[1] << std::endl; }
 			static void playSoundOrder(std::vector<std::string> parameters) { std::cout << "i play sound : " << parameters[1] << " with duration " << parameters[2] << std::endl; }
 	};

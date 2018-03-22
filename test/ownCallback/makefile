@@ -1,6 +1,6 @@
 CFLAGS = -std=c++17 -fpermissive
 LIBS=-lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio 
-SRCS_DIR = ../sources/
+SRCS_DIR = ../../sources/
 LIB_DIR = lib/
 FIND_RECUR = $(shell find . -type f -name "*.cpp")
 INCLUDES_DIR = ../includes/

@@ -1,10 +1,17 @@
 CC = g++ 
-CFLAGS = -std=c++17 -fpermissive
+CPPFLAGS = -std=c++17 -fpermissive -fPIC
 LIBNAME = libkairos.so
+LDFLAGS = -shared 
 
-SOURCES := $(patsubst %.cpp,%.o,$(wildcard *.cpp))
+SOURCEDIR = Kairos
 
-all : objects
+all : build clean 
 
-objects : $(SOURCES)
-	$(CC) -c $(SOURCES)
+objects :
+	$(CC) -c $(SOURCEDIR)/*.cpp $(CPPFLAGS)
+
+build : objects
+	$(CC) -o $(LIBNAME) *.o -shared $(CPPFLAGS)
+
+clean :
+	rm -f *.o 
